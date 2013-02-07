@@ -50,6 +50,7 @@ if __name__ == '__main__':
 			for wd,mask,cookie,name in inotify.read():
 
 				dirn = wdDirDict[wd]
+				path = str(dirn+name)
 
 				if mask == 256:
 					print 'File ' + name + ' added in directory'\
@@ -59,7 +60,7 @@ if __name__ == '__main__':
 					' ' + dirn + '.'
 
 				for r in remoteList:
-					os.system('scp "%s" "%s:%s"' % (str(dirn+name),r,"/tmp"))
+					os.system('scp "%s" "%s:%s"' % (path,r,"/tmp"))
 
 		except KeyboardInterrupt:
 			for iwd in wdDirDict.keys():
