@@ -4,3 +4,4 @@
 4. Automatically find user name of logged in user, use by default.
 5. Else, parse out and use specified user name.
 6. Add ability to specify remote directory destination. Key on slash character, as colons can be in hostnames, but slashes cannot be.
+7. Identify groups of files closely related in time and scp all of these in one command.
