@@ -9,6 +9,7 @@ Planned to be expanded with flexible syntax.
 syntax: 
 
 wormhole.py -d [directories] -r [remote hosts] 
+
 wormhole.py -h to print help message        
 
 example: 
