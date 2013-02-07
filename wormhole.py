@@ -6,7 +6,7 @@ wormhole: scp's a file when file appears in directory(s) to remote host(s)
 syntax: wormhole.py -d [directories] -r [remote hosts]
         wormhole.py -h to print this message
 
-example: wormhole.py /home/user/dir1 ../dir2/ user@remote remote2
+example: wormhole.py /home/user/dir1/ ../dir2/ user@remote1 user@remote2
 """
 
 import sys
@@ -29,6 +29,7 @@ if __name__ == '__main__':
 	for arg in sys.argv:
 		if arg == "-h":
 			print __doc__
+			quit()
 		elif arg == '-d':
 			remotes = False
 			dirs = True
