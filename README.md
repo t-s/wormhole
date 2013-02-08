@@ -5,12 +5,16 @@ When a file appears in a specified director(ies), SCP that file to specfied remo
 Wormhole uses inotify code from http://code.activestate.com/recipes/576375-low-level-inotify-wrapper/. Wormhole does not requre installtion of any additional package.
 It is planned to be expanded with flexible syntax.
 
-syntax: 
+__syntax:__
 
-wormhole.py -d [directories] -r [remote hosts] 
+`wormhole.py -d [directories] -r [remote hosts] `
 
-wormhole.py -h to print help message        
+`wormhole.py -h to print help message `
 
-example: 
+`wormhole.py -c [command]`
 
-wormhole.py /home/user/dir1/ ../dir2/ user@remote1 user@remote2
+__examples:__
+
+`wormhole.py /home/user/dir1/ ../dir2/ user@remote1 user@remote2`
+
+`wormhole.py -c sed -i 's/cat/dog/g'`
