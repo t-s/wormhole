@@ -1,4 +1,4 @@
-Wormhole
+wormhole
 =========
 When a file appears in a specified director(ies), SCP that file to specfied remote host(s).
 
