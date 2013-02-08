@@ -4,9 +4,11 @@
 wormhole: scp's a file when file appears in directory(s) to remote host(s)
 
 syntax: wormhole.py -d [directories] -r [remote hosts]
+		wormhole.py -c [command] 
         wormhole.py -h to print this message
 
 example: wormhole.py /home/user/dir1/ ../dir2/ user@remote1 user@remote2
+example: wormhole.py -c sed -i 's/cat/dog/g'
 """
 
 import sys
@@ -17,10 +19,13 @@ if __name__ == '__main__':
 
 	dirList = []
 	remoteList = []
+	commandList = []
+
 	wdDirDict = {}	
 
 	dirs = False
 	remotes = False
+	commands = True
 
 	inotify = Inotify()
 
@@ -30,16 +35,24 @@ if __name__ == '__main__':
 		if arg == "-h":
 			print __doc__
 			quit()
+		elif arg == "-c":
+			remotes = False
+			dirs = False
+			commands = True
 		elif arg == '-d':
 			remotes = False
 			dirs = True
+			commands = False
 		elif arg == '-r':
 			remotes = True
 			dirs = False
+			commands = False
 		elif remotes:
 			remoteList.append(arg)
 		elif dirs:
 			dirList.append(arg)
+		elif commands:
+			commandList.append(arg)
 
 	for d in dirList:
 		iwd = inotify.add_watch(d,0x00000180)
@@ -59,8 +72,14 @@ if __name__ == '__main__':
 					print 'File ' + name + ' moved to directory'\
 					' ' + dirn + '.'
 
-				for r in remoteList:
-					os.system('scp "%s" "%s:%s"' % (path,r,"/tmp"))
+				if (len(commandList) > 0):
+					sys.stdout.write('%s %s\n' % (' '.join(commandList),path))
+					os.system('%s %s' % (' '.join(commandList),path))
+					break
+
+				else:
+					for r in remoteList:
+						os.system('scp "%s" "%s:%s"' % (path,r,"/tmp"))
 
 		except KeyboardInterrupt:
 			for iwd in wdDirDict.keys():
