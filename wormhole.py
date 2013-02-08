@@ -50,12 +50,14 @@ if __name__ == '__main__':
 		elif remotes:
 			remoteList.append(arg)
 		elif dirs:
+			arg = os.path.abspath(arg)
 			dirList.append(arg)
 		elif commands:
 			commandList.append(arg)
 
 	for d in dirList:
-		iwd = inotify.add_watch(d,0x00000180)
+		# 180 hex is mask for both file creation and file move
+		iwd = inotify.add_watch(d,0x00000180)		
 		wdDirDict[iwd] = d
 	
 	while True:
@@ -63,14 +65,14 @@ if __name__ == '__main__':
 			for wd,mask,cookie,name in inotify.read():
 
 				dirn = wdDirDict[wd]
-				path = str(dirn+name)
+				path = str(dirn+"/"+name)
 
 				if mask == 256:
 					print 'File ' + name + ' added in directory'\
-					' ' + dirn + '.'
+					' ' + dirn + '/.'
 				if mask == 128:
 					print 'File ' + name + ' moved to directory'\
-					' ' + dirn + '.'
+					' ' + dirn + '/.'
 
 				if (len(commandList) > 0):
 					sys.stdout.write('%s %s\n' % (' '.join(commandList),path))
