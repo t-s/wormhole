@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
 	dirs = False
 	remotes = False
-	commands = True
+	commands = False
 
 	inotify = Inotify()
 
