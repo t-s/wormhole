@@ -6,7 +6,7 @@ syntax: wormhole.py -d {directories} -r {remote_hosts} -u [username]
 		wormhole.py -c {command}
         wormhole.py -h to print this message
 
-example: wormhole.py -d /home/user1/dir1/ ../dir2/ -r remote1 remote2 -u user1
+example: wormhole.py -d /home/user/dir1/ ../dir2/ -r remote1 remote2 -u user
 example: wormhole.py -c sed -i 's/cat/dog/g'
 """
 
