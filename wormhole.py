@@ -63,9 +63,9 @@ if __name__ == '__main__':
 			user = False
 		elif arg == '-u':
 			remotes = False
-            dirs = False
-            commands = False
-            user = True
+			dirs = False
+			commands = False
+			user = True
 		elif remotes:
 			remoteList.append(arg)
 		elif dirs:
