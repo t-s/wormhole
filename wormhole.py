@@ -29,6 +29,7 @@ if __name__ == '__main__':
 	user = False
 
 	# checks environment variables for username, system portable
+	# might be set to a different user later if argument is there
 	username = getpass.getuser()	
 
 	inotify = Inotify()
@@ -96,13 +97,13 @@ if __name__ == '__main__':
 					' ' + dirn + '/.'
 
 				if (len(commandList) > 0):
-					sys.stdout.write('%s@%s %s\n' % (username,' '.join(commandList),path))
-					os.system('%s@%s %s' % (username,' '.join(commandList),path))
+					sys.stdout.write('%s %s\n' % (' '.join(commandList),path))
+					os.system('%s %s' % (' '.join(commandList),path))
 					break
 
 				else:
 					for r in remoteList:
-						os.system('scp "%s" "%s:%s"' % (path,r,"/tmp"))
+						os.system('scp "%s" "%s@%s:%s"' % (path,username,r,"/tmp"))
 
 		except KeyboardInterrupt:
 			for iwd in wdDirDict.keys():
