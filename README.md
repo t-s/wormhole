@@ -15,6 +15,6 @@ __syntax:__
 
 __examples:__
 
-`wormhole.py /home/user/dir1/ ../dir2/ -r remote1 remote2 -u user`
+`wormhole.py -d /home/user/dir1/ ../dir2/ -r remote1 remote2 -u user`
 
-`wormhole.py -c sed -i 's/cat/dog/g'`
+`wormhole.py -d /home/user/dir1/ -c sed -i 's/cat/dog/g'`
