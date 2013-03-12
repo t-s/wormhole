@@ -9,9 +9,9 @@ __syntax:__
 
 `wormhole.py -d [directories] -r [remote hosts] -u [username]`
 
-`wormhole.py -h to print help message `
+`wormhole.py -d [directories] -c [command]`
 
-`wormhole.py -c [command]`
+`wormhole.py -h to print help message`
 
 __examples:__
 
