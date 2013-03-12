@@ -7,7 +7,7 @@ It is planned to be expanded with flexible syntax.
 
 __syntax:__
 
-`wormhole.py -d [directories] -r [remote hosts] -u [username]
+`wormhole.py -d [directories] -r [remote hosts] -u [username]`
 
 `wormhole.py -h to print help message `
 
