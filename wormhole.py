@@ -3,11 +3,11 @@
 wormhole: scp's a file when file appears in directory(s) to remote host(s)
 
 syntax: wormhole.py -d {directories} -r {remote_hosts} -u [username]
-		wormhole.py -c {command}
+	wormhole.py -d {directories} -c {command}
         wormhole.py -h to print this message
 
 example: wormhole.py -d /home/user/dir1/ ../dir2/ -r remote1 remote2 -u user
-example: wormhole.py -c sed -i 's/cat/dog/g'
+example: wormhole.py -d /home/user/dir1/ -c sed -i 's/cat/dog/g'
 """
 
 import sys
@@ -102,6 +102,8 @@ if __name__ == '__main__':
 					break
 
 				else:
+					# put in /tmp for now, as it's a safe bet we can scp to this
+					# later, add ability to scp to any directory
 					for r in remoteList:
 						os.system('scp "%s" "%s@%s:%s"' % (path,username,r,"/tmp"))
 
