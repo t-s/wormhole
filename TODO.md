@@ -9,3 +9,4 @@
 7. Identify groups of files closely related in time and scp all of these in one transfer session.
 8. Alternatively, look into keeping SCP open in some way, so it sends files as soon as they appear. Look at http://gnuru.org/article/1522/copying-with-scp-stdin https://internal.lboro.ac.uk/mail/public/lulu/2002-10/msg00021.html http://superuser.com/questions/291829/how-do-i-scp-the-huge-output-of-a-command-directly-to-a-remote-machine
 9. Catch exceptions besides interrupt - kill, for example. (is this the same interrupt as crtl-C?)
+10. Add ability to key on a stop file, being a file with a unique filename specified at wormhole start-up that, when encountered, quits the process.
