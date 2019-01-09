@@ -2,8 +2,7 @@ wormhole
 =========
 When a file appears in a specified director(ies), SCP that file to specfied remote host(s) - or run an arbitrary command on that file.
 
-Wormhole uses inotify code from http://code.activestate.com/recipes/576375-low-level-inotify-wrapper/. Wormhole does not requre installation of any additional package.
-It is planned to be expanded with flexible syntax.
+Wormhole uses inotify. Wormhole does not require installation of any additional package.
 
 __syntax:__
 
